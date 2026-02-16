@@ -1,15 +1,16 @@
 # ThinkNest Blog API - Quick Testing Guide
 
 ## Base URL
-```
-http://localhost:5000/api/blogs
-```
+**Production:** `https://thinknest-4lep.onrender.com`  
+**Local:** `http://localhost:5000`
+
+Example: `https://thinknest-4lep.onrender.com/api/blogs`
 
 ## Test Endpoints
 
 ### 1. Create a Blog Post
 ```bash
-POST http://localhost:5000/api/blogs
+POST https://thinknest-4lep.onrender.com/api/blogs
 Content-Type: application/json
 
 {
@@ -24,17 +25,17 @@ Content-Type: application/json
 
 ### 2. Get All Blogs
 ```bash
-GET http://localhost:5000/api/blogs
+GET https://thinknest-4lep.onrender.com/api/blogs
 ```
 
 ### 3. Get Single Blog by Slug
 ```bash
-GET http://localhost:5000/api/blogs/10-tips-for-better-sleep
+GET https://thinknest-4lep.onrender.com/api/blogs/10-tips-for-better-sleep
 ```
 
 ### 4. Update Blog
 ```bash
-PUT http://localhost:5000/api/blogs/{blog_id}
+PUT https://thinknest-4lep.onrender.com/api/blogs/{blog_id}
 Content-Type: application/json
 
 {
@@ -45,14 +46,14 @@ Content-Type: application/json
 
 ### 5. Delete Blog
 ```bash
-DELETE http://localhost:5000/api/blogs/{blog_id}
+DELETE https://thinknest-4lep.onrender.com/api/blogs/{blog_id}
 ```
 
 ## Testing with cURL
 
 ### Create Blog
 ```bash
-curl -X POST http://localhost:5000/api/blogs \
+curl -X POST https://thinknest-4lep.onrender.com/api/blogs \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Healthy Morning Routine",
@@ -66,18 +67,18 @@ curl -X POST http://localhost:5000/api/blogs \
 
 ### Get All Blogs
 ```bash
-curl http://localhost:5000/api/blogs
+curl https://thinknest-4lep.onrender.com/api/blogs
 ```
 
 ### Get Blog by Slug
 ```bash
-curl http://localhost:5000/api/blogs/healthy-morning-routine
+curl https://thinknest-4lep.onrender.com/api/blogs/healthy-morning-routine
 ```
 
 ## Testing with Postman
 
 1. Import the endpoints above
-2. Set base URL: `http://localhost:5000`
+2. Set base URL: `https://thinknest-4lep.onrender.com`
 3. For POST/PUT requests, set Headers:
    - `Content-Type: application/json`
 4. Add request body in the "Body" tab (raw JSON)
