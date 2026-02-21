@@ -48,6 +48,53 @@ const sendMessage = async (req, res) => {
   }
 };
 
+const getAllMessages = async (req, res) => {
+  try {
+    const messages = await Contact.find().sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: messages.length,
+      data: messages,
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching messages',
+      error: error.message,
+    });
+  }
+};
+
+const deleteMessage = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const contact = await Contact.findById(id);
+    if (!contact) {
+      return res.status(404).json({
+        success: false,
+        message: 'Message not found',
+      });
+    }
+
+    await Contact.findByIdAndDelete(id);
+
+    res.status(200).json({
+      success: true,
+      message: 'Message deleted successfully',
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error deleting message',
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   sendMessage,
+  getAllMessages,
+  deleteMessage,
 };
